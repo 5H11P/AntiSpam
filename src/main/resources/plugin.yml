@@ -1,0 +1,34 @@
+name: AntiSpam
+main: cn.antispam.AntiSpamPlugin
+version: 1.0.0
+author: 5H11P, Codex
+description: Chat anti-spam and anti-advertise plugin for Spigot 1.8.8.
+
+commands:
+  antispam:
+    description: AntiSpam main command.
+    usage: /<command> reload
+    aliases: [as]
+
+permissions:
+  antispam.bypass.all:
+    description: Bypass all AntiSpam checks.
+    default: op
+  antispam.bypass.cooldown:
+    description: Bypass chat cooldown.
+    default: op
+  antispam.bypass.spam:
+    description: Bypass similar message spam checks.
+    default: op
+  antispam.bypass.advertise:
+    description: Bypass IP and domain advertise checks.
+    default: op
+  antispam.cooldown.vip:
+    description: Use VIP chat cooldown.
+    default: false
+  antispam.cooldown.admin:
+    description: Use admin chat cooldown.
+    default: op
+  antispam.reload:
+    description: Reload AntiSpam config.
+    default: op

@@ -1,0 +1,122 @@
+# AntiSpam config for Spigot 1.8.8
+
+settings:
+  bypass-all-permission: "antispam.bypass.all"
+
+cooldown:
+  enabled: true
+
+  # 默认发送消息冷却时间，单位：秒
+  default-seconds: 3
+
+  # 拥有该权限的玩家无聊天冷却
+  bypass-permission: "antispam.bypass.cooldown"
+
+  # 不同权限组的冷却时间，单位：秒
+  # 玩家拥有多个权限时，使用最短冷却时间
+  permission-groups:
+    vip:
+      permission: "antispam.cooldown.vip"
+      seconds: 1
+    admin:
+      permission: "antispam.cooldown.admin"
+      seconds: 0
+
+anti-spam:
+  enabled: true
+
+  # 拥有该权限的玩家跳过相似刷屏检测
+  bypass-permission: "antispam.bypass.spam"
+
+  # 一次性最大重复内容发送次数
+  # 例如设置为 3：第 4 次发送相同/高度相似内容会被拦截
+  max-repeat-times: 3
+
+  # 重置刷屏时间，单位：秒
+  reset-spam-time: 3
+
+  # 判断高度相似的阈值，范围 0.0 - 1.0
+  similarity-threshold: 0.85
+
+  # 低于该长度的消息不参与相似度检测
+  min-message-length: 3
+
+  # 每个玩家保留多少条近期聊天记录
+  history-size: 5
+
+anti-advertise:
+  enabled: true
+
+  # 拥有该权限的玩家跳过 IP / 域名广告检测
+  bypass-permission: "antispam.bypass.advertise"
+
+  # 是否检测 IPv4，例如 1.2.3.4
+  check-ip: true
+
+  # 是否检测带端口地址，例如 1.2.3.4:25565
+  check-address-with-port: true
+
+  # 是否检测域名，例如 play.example.com / mc.example.net
+  check-domain: true
+
+  # 域名后缀检测列表，支持自行添加更多根域名
+  blocked-tlds:
+    - "com"
+    - "net"
+    - "org"
+    - "cn"
+    - "cc"
+    - "top"
+    - "xyz"
+    - "vip"
+    - "icu"
+    - "shop"
+    - "store"
+    - "site"
+    - "online"
+    - "fun"
+    - "club"
+    - "pro"
+    - "me"
+    - "io"
+    - "gg"
+    - "ink"
+    - "link"
+    - "info"
+    - "biz"
+    - "tv"
+    - "asia"
+    - "pw"
+    - "run"
+    - "live"
+    - "world"
+    - "space"
+    - "cloud"
+    - "app"
+    - "dev"
+    - "tech"
+    - "host"
+    - "network"
+    - "games"
+    - "game"
+    - "wiki"
+    - "work"
+    - "lol"
+
+  # 允许出现的域名或 IP，大小写不敏感
+  whitelist:
+    - "yourserver.com"
+    - "mc.yourserver.com"
+    - "127.0.0.1"
+
+messages:
+  prefix: "&8[&cAntiSpam&8] "
+  cooldown-blocked: "%prefix%&c你说话太快了，请等待 &e%seconds% &c秒后再发送。"
+  spam-blocked: "%prefix%&c请不要刷屏或重复发送高度相似的内容。"
+  ip-blocked: "%prefix%&c请不要发送其他服务器的 IP 或域名。"
+  reload-success: "%prefix%&a配置文件已重载。"
+  no-permission: "%prefix%&c你没有权限执行该命令。"
+  unknown-command: "%prefix%&c用法: /antispam reload"
+
+commands:
+  reload-permission: "antispam.reload"
